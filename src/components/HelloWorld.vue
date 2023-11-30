@@ -1,44 +1,33 @@
-<script setup>
-defineProps({
-  msg: {
-    type: String,
-    required: true
-  }
-})
-</script>
-
 <template>
-  <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-    <h3>
-      You’ve successfully created a project with
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-    </h3>
+  <div class="alert alert-info">
+    <h2>{{ title }}</h2>
+    <p>{{ message }}</p>
+    <hr>
+    <div>
+      <input class="form-control" type="text" v-model="input">
+      <button class="btn btn-info mt-2" v-on:click="doAction">Click</button>
+    </div>
   </div>
 </template>
 
-<style scoped>
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  position: relative;
-  top: -10px;
-}
-
-h3 {
-  font-size: 1.2rem;
-}
-
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
+<script>
+export default {
+  name: 'HelloWorld',
+  props: {
+    title: String,
+    message: String
+  },
+  data(){
+    return {
+      message: 'お名前は？',
+      input: 'no_name'
+    }
+  },
+  methods: {
+    // クリックしたら実行
+    doAction(){
+      this.message = 'こんにちわ、'+ this.input + 'さん！'
+    }
   }
 }
-</style>
+</script>
