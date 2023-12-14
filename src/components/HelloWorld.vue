@@ -1,33 +1,50 @@
 <template>
-  <div class="alert alert-info">
+  <div class="alert alert-primary">
     <h2>{{ title }}</h2>
     <p>{{ message }}</p>
-    <hr>
-    <div>
-      <input class="form-control" type="text" v-model="input">
-      <button class="btn btn-info mt-2" v-on:click="doAction">Click</button>
-    </div>
+    <button class="btn btn-primary m-3" v-on:click="doAction">{{ btn }}</button>
+    <transition name="transit">
+      <p v-if="flg" class="trans">Transition!</p>
+    </transition>
   </div>
+  
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
-  props: {
-    title: String,
-    message: String
-  },
   data(){
     return {
-      message: 'お名前は？',
-      input: 'no_name'
+      title:'Trans&Anim',
+      message:'This is Transition sample',
+      flg:true,
+      btn:'Show/Hide'
     }
   },
   methods: {
-    // クリックしたら実行
     doAction(){
-      this.message = 'こんにちわ、'+ this.input + 'さん！'
-    }
+      this.flg = !this.flg
+    },
   }
 }
 </script>
+<style>
+.trans {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  font-size: 20pt;
+}
+.transit-enter-active {
+  transition: 1.0s;
+}
+.transit-leave-active {
+  transition: 1.0s;
+  opacity: 0.5;
+}
+
+.transit-enter, .transit-leave-to {
+  transform: translateX(200px) translateY(-200px);
+}
+
+</style>

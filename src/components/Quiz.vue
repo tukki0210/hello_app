@@ -1,7 +1,7 @@
 <template>
     <div class="alert alert-success">
         <h2>クイズを作ります</h2>
-        <p>{{ quiz_text }}</p>
+        <p>{{ quiz_text }}no_name</p>
     </div>
 </template>
 <script>
